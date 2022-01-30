@@ -4,4 +4,4 @@ from .models import Primtodo
 class PrimtodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Primtodo
-        fields = ('id', 'task', 'detail', 'isCompleted')
+        fields = ('id', 'task', 'isCompleted')

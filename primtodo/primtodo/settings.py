@@ -25,7 +25,13 @@ SECRET_KEY = '2_j1@!9(0&ka4bcm8lrz#bzg62#l##8g_7t2^4ek0-in=!wukn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ALLOW_CREDENTIALS = True
+# CORS_EXPOSE_HEADERS = (
+#     'Access-Control-Allow-Origin: *',
+# )
 
 
 # Application definition
@@ -40,14 +46,17 @@ INSTALLED_APPS = [
 
     #installed apps
     'rest_framework',
+    'corsheaders',
+
 
     # my apps
     'todoapp',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = [ 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',# third party
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
