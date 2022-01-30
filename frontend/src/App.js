@@ -7,6 +7,7 @@ import axios from "axios";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [isCompleted, setIsCompleted] = useState(false);
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -36,6 +37,15 @@ function App() {
     } catch (err) {}
   };
 
+  const deleteTask = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8000/primtodo/${id}`);
+      getTasks();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="content">
       <Container>
@@ -43,8 +53,14 @@ function App() {
           <Col>
             <AddTask addTask={addTask} />
             {tasks.map((task, index) => {
-              return <TasksList id={task.id} task={task.task} />;
-              <h1>task</h1>;
+              return (
+                <TasksList
+                  key={index}
+                  id={task.id}
+                  task={task.task}
+                  deleteTask={deleteTask}
+                />
+              );
             })}
           </Col>
         </Row>

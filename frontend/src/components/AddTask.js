@@ -10,10 +10,10 @@ const AddTask = ({ addTask }) => {
   return (
     <Form>
       <Form.Group className="mb-3" controlId="task">
-        <Form.Label>Task</Form.Label>
+        <Form.Label>New Task</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Enter your task's title"
+          placeholder="Enter your task here"
           onChange={(e) => setTask(e.target.value)}
         />
       </Form.Group>
